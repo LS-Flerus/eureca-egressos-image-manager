@@ -44,12 +44,10 @@ app.get("/get/:id", async (req,res) => {
 })
 
 app.post("/upload", async (req,res) => {
-    console.log(req.body)
     const image = new imageModel({
         image: req.body.img
     })
     const data = await image.save()
-    console.log(data)
     res.send({data})
 })
 
