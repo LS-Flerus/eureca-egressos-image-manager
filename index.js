@@ -10,7 +10,7 @@ const app = express()
 app.use(cors())
 app.use(express.json({limit : "5mb"}))
 
-const bd_url = process.env.DB_URL;
+const bd_url = "mongodb+srv://grimoireadmin:uZKjBzW3fIUpOueb@cluster0.irebt.mongodb.net/imagebase64?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(bd_url)
 .then(() =>{
@@ -89,32 +89,3 @@ app.patch('/update/:id', (req, res) => {
 })
 
 app.listen(PORT, ()=>console.log("Server is running at "+PORT))
-
-const url = process.env.RENDER_URL
-const url_back = process.env.BACKEND_URL
-const interval = 10000;
-
-
-//Reloader Function
-/*
-async function reloadWebsite() {
-  const res = await fetch(`${url}`, {
-    method:"GET",
-    headers: {
-        "content-type" : "application/json"
-    }
-  })
-
-  const res_back = await fetch(`${url_back}/server/ping`, {
-    method:"GET",
-    headers: {
-      "ngrok-skip-browser-warning": "any",
-    }
-  })
-
-  const data = await res.json()
-  console.log(data)
-}
-
-setInterval(reloadWebsite, interval); 
-*/
